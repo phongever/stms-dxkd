@@ -1,8 +1,8 @@
 import { defineConfig } from "vitepress";
 
 export default defineConfig({
-  title: "Vitepress theme book",
-  description: "Vitepress theme for book",
+  title: "Sóng to mặc sóng, đường xa kệ đường",
+  description: "Sóng có to, đường có xa thì cũng mặc kệ hết",
   srcDir: "src",
   head: [
     ["link", { rel: "preconnect", href: "https://fonts.googleapis.com" }],
