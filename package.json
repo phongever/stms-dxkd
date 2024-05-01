@@ -1,0 +1,22 @@
+{
+  "name": "vitepress-theme-ebook",
+  "description": "Vitepress theme for ebook",
+  "version": "1.0.0",
+  "author": "Hoai Phong <phongduong1710@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phongever/vitepress-theme-ebook"
+  },
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.3",
+    "vitepress": "^1.0.1"
+  }
+}
