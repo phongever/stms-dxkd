@@ -5,5 +5,8 @@
 
 <script lang="ts" setup>
 
-const props = defineProps(["title", "author"])
+const props = defineProps<{
+  title: string,
+  author: string
+}>()
 </script>

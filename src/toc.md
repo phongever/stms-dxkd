@@ -1,4 +1,4 @@
 ---
-title: Table of content
+title: Mục lục
 layout: toc
 ---

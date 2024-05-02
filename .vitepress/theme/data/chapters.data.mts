@@ -1,3 +1,11 @@
-import { createContentLoader } from "vitepress";
+import { fetchChapters } from "../../../utils/fetchChapters";
 
-export default createContentLoader("chapters/*.md", {});
+export default {
+  async load() {
+    await fetchChapters();
+
+    return {
+      hello: "world",
+    };
+  },
+};
