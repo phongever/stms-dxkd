@@ -8,7 +8,7 @@ import Navbar from './components/Navbar.vue';
 import Chapter from './components/Chapter.vue';
 import { LAYOUT } from "./index.i"
 import { data as homeData } from "./data/home.data"
-import { data as chaptersData } from "./data/chapters.data.mts"
+import { data as chaptersData } from "./data/chapters.data"
 
 const { page, frontmatter, params }: VitePressData = useData()
 const route: Route = useRoute()
@@ -17,23 +17,21 @@ const preNextUrl: ComputedRef<{
   preUrl: string | null,
   nextUrl: string | null,
 } | undefined> = computed(() => {
-  console.log(chaptersData)
-
   if (page.value.isNotFound) return { preUrl: null, nextUrl: null }
 
   switch (frontmatter.value.layout) {
     case LAYOUT.HOME:
       return { preUrl: null, nextUrl: "/toc" }
-    // case LAYOUT.TOC:
-    //   return { preUrl: "/", nextUrl: chaptersData[0].url }
-    // default:
-    //   if (route.path === chaptersData[0].url) return { preUrl: "/toc", nextUrl: chaptersData[1].url }
+    case LAYOUT.TOC:
+      return { preUrl: "/", nextUrl: chaptersData[0].url }
+    default:
+      if (route.path === chaptersData[0].url) return { preUrl: "/toc", nextUrl: chaptersData[1].url }
 
-    //   if (route.path === chaptersData[chaptersData.length - 1].url) return { preUrl: chaptersData[chaptersData.length - 2].url, nextUrl: null }
+      if (route.path === chaptersData[chaptersData.length - 1].url) return { preUrl: chaptersData[chaptersData.length - 2].url, nextUrl: null }
 
-    //   const currentPageIndex = chaptersData.findIndex(chapter => chapter.url === route.path)
+      const currentPageIndex = chaptersData.findIndex(chapter => chapter.url === route.path)
 
-    //   return { preUrl: chaptersData[currentPageIndex - 1].url, nextUrl: chaptersData[currentPageIndex + 1].url }
+      return { preUrl: chaptersData[currentPageIndex - 1].url, nextUrl: chaptersData[currentPageIndex + 1].url }
   }
 })
 </script>
@@ -47,7 +45,7 @@ const preNextUrl: ComputedRef<{
         <NotFound v-if="page.isNotFound" />
         <Home v-else-if="frontmatter.layout === LAYOUT.HOME" v-bind="homeData" />
         <ToC v-else-if="frontmatter.layout === LAYOUT.TOC" :chapters="chaptersData" />
-        <Chapter v-else :title="frontmatter.title" />
+        <Chapter v-else :title="params.title" />
       </div>
       <Navbar v-bind="preNextUrl" />
     </div>

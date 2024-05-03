@@ -1,18 +1,18 @@
-import { fetchChapters } from "../../utils";
+import { fetchChapters } from "../../utils/fetchChapters";
+import type { Chapters } from "../../utils/fetchChapters";
+
+type Path = {
+  params: { chapter: string; title: string; url: string };
+  content: string;
+};
 
 export default {
-  async paths() {
-    await fetchChapters();
+  async paths(): Promise<Path[]> {
+    const chapters: Chapters = await fetchChapters();
 
-    return [
-      {
-        params: { chapter: "chapter-1", title: "Chapter 1" },
-        content: "test 1",
-      },
-      {
-        params: { chapter: "chapter-2", title: "Chapter 2" },
-        content: "test 2",
-      },
-    ];
+    return chapters.map(({ chapterId, content, title, url }) => ({
+      params: { chapter: chapterId, title, url },
+      content,
+    }));
   },
 };

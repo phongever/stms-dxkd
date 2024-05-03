@@ -2,7 +2,7 @@
   <h1>Mục lục</h1>
   <ul>
     <li v-for="(chapter, i) in chapters" :key="i">
-      <a :href="chapter.url">{{ chapter.frontmatter.title }}</a>
+      <a :href="chapter.url">{{ chapter.title }}</a>
     </li>
   </ul>
 </template>

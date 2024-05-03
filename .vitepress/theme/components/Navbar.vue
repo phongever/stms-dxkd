@@ -14,7 +14,7 @@
 
 <script lang="ts" setup>
 const props = defineProps<{
-  preUrl: string,
-  nextUrl: string,
+  preUrl: string | null,
+  nextUrl: string | null,
 }>()
 </script>
